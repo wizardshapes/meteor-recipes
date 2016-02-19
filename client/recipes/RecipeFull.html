@@ -1,0 +1,22 @@
+<template name="RecipeFull">
+	<article class="recipe">
+		<h3>{{recipe.name}}</h3>
+		{{#if $.Session.get 'editMode'}}
+			{{> quickForm collection="Recipes" id="updateRecipe" type="update" doc=recipe autosave=true}}
+		{{else}}
+			<p>{{recipe.desc}}</p>
+			<p>
+				{{#each recipe.ingredients}}
+					<span class="ingredient">{{name}} - {{amount}}</span>
+				{{/each}}
+			</p>
+			<p>
+				{{#each recipe.directions}}
+					<p>{{this}}</p>
+				{{/each}}
+			</p>
+		{{/if}}
+		<i class="fa fa-pencil"></i>
+		<i class="fa fa-trash"></i>
+	</article>
+</template>

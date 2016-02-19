@@ -1,0 +1,27 @@
+<template name="Recipes">
+	{{#if showAddRecipe}}
+		{{> NewRecipe}}
+	{{/if}}
+	
+	<section class="recipes">
+		{{#if Template.subscriptionsReady}}
+			{{#each recipes}}
+				{{> Recipe}}
+			{{/each}}
+		{{else}}
+			<p>Loading recipes</p>
+		{{/if}}
+	</section>
+
+	<div id="addRecipe" class="fab green">
+		{{#if showAddRecipe}}
+			<i class="fa fa-minus"></i>
+		{{else}}
+			<i class="fa fa-plus"></i>
+		{{/if}}
+      <core-icon icon="create"></core-icon>
+      <paper-ripple class="circle recenteringTouch" fit></paper-ripple>
+
+    </div>
+     
+</template>
